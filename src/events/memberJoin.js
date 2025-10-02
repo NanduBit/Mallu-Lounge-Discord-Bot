@@ -38,14 +38,8 @@ module.exports = {
         await generalChannel.send({
           embeds: [
             {
-                color: 0xa64d00,
+                color: Math.floor(Math.random() * 16777215),
                 description: `Welcome to the server <@${member.id}>`,
-            },
-            {
-              color: 0xa64d00,
-              image: {
-                url: "https://i2.wp.com/drunkenanimeblog.com/wp-content/uploads/2017/07/tumblr_ooueqinkjp1uiicp5o1_500.gif?fit=500%2C235",
-              },
             },
           ],
         });
