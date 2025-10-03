@@ -7,9 +7,8 @@ module.exports = {
   async execute(member) {
     if (member.guild.id === guildID) {
       const channel = await member.guild.channels.fetch(welcomeChannelID);
-      const generalChannel = await member.guild.channels.fetch(
-        generalChannelID
-      );
+      const generalChannel = await member.guild.channels.fetch(generalChannelID);
+
       if (channel) {
         await channel.send({
           content: `**WELCOME TO MY SOUL SOCIETY**\n\nHappy to have you <@${member.id}> ❤️\n\nGrab your controllers, flex those gaming skills, and dive into the action! This is where gamers unite, chaos unfolds, and fun never stops. Let's game, chat, and vibe ✨\n\n❏ Go through <#1309818452705280050> to keep the server safe and fun for everyone ✩°｡⋆\n❏ Come say hi on <#1309818552714530856>\n\n`,
@@ -38,11 +37,11 @@ module.exports = {
         await generalChannel.send({
           embeds: [
             {
-                author: {
-                  name: `Welcome to the server <@${member.id}>`,
-                  icon_url: member.displayAvatarURL()
-                }
-                color: Math.floor(Math.random() * 16777215)
+              author: {
+                name: `Welcome to the server @{member.username}`,
+                icon_url: member.user.displayAvatarURL(),
+              },
+              color: Math.floor(Math.random() * 16777215),
             },
           ],
         });
