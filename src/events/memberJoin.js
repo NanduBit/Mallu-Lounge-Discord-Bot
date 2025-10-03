@@ -38,8 +38,11 @@ module.exports = {
         await generalChannel.send({
           embeds: [
             {
-                color: Math.floor(Math.random() * 16777215),
-                description: `Welcome to the server <@${member.id}>`,
+                author: {
+                  name: `Welcome to the server <@${member.id}>`,
+                  icon_url: member.displayAvatarURL()
+                }
+                color: Math.floor(Math.random() * 16777215)
             },
           ],
         });
