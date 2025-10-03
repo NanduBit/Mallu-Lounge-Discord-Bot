@@ -38,7 +38,7 @@ module.exports = {
           embeds: [
             {
               author: {
-                name: `Welcome to the server @{member.username}`,
+                name: `Welcome to the server @{member.user.username}`,
                 icon_url: member.user.displayAvatarURL(),
               },
               color: Math.floor(Math.random() * 16777215),
