@@ -11,7 +11,6 @@ module.exports = {
 
       if (channel) {
         await channel.send({
-          content: `**WELCOME TO MY SOUL SOCIETY**\n\nHappy to have you <@${member.id}> ❤️\n\nGrab your controllers, flex those gaming skills, and dive into the action! This is where gamers unite, chaos unfolds, and fun never stops. Let's game, chat, and vibe ✨\n\n❏ Go through <#1309818452705280050> to keep the server safe and fun for everyone ✩°｡⋆\n❏ Come say hi on <#1309818552714530856>\n\n`,
           embeds: [
             {
               color: 0x36a8ff,
@@ -20,8 +19,10 @@ module.exports = {
                 icon_url: "",
               },
               title: "𝕎𝕖𝕝𝕔𝕠𝕞𝕖 𝕋𝕠 𝕄𝕒𝕝𝕝𝕦 𝕃𝕠𝕦𝕟𝕘𝕖",
+              description:`**Welcome to Mallu Lounge <@${member.id}>
+ come talk in <#1309818552714530856>**`,
               image: {
-                url: "https://i.pinimg.com/originals/b4/84/5c/b4845c9057251890188a121bdc9fa7f5.gif",
+                url: "https://media.tenor.com/lxMJcSXfSLIAAAAC/zero2-zero-two.gif",
               },
               footer: {
                 text: `${member.user.username} joined the server!`,
@@ -41,6 +42,9 @@ module.exports = {
                 name: `Welcome to the server @{member.user.username}`,
                 icon_url: member.user.displayAvatarURL(),
               },
+              image: {
+                 url: "https://tenor.com/view/noo-melcow-gif-12196187"
+              }
               color: Math.floor(Math.random() * 16777215),
             },
           ],
