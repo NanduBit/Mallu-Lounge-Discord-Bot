@@ -9,7 +9,7 @@ const {
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("test")
+    .setName("gaming-roles")
     .setDescription("SetUp a button role message!")
     .setDefaultMemberPermissions(0x00002000), // Manage Messages permission
   async execute(interaction) {
@@ -92,10 +92,9 @@ module.exports = {
     const components = [row1, row2, row3, row4];
 
     const embed = new EmbedBuilder()
-      .setTitle("<a:eyekiller:1430580121105862756> 𝑮𝒂𝒎𝒊𝒏𝒈 𝑹𝒐𝒍𝒆 𝑺𝒆𝒍𝒆𝒄𝒕𝒊𝒐𝒏")
-      .setDescription("𝑷𝒊𝒄𝒌 𝒕𝒉𝒆 𝒈𝒂𝒎𝒆𝒔 𝒖 𝒑𝒍𝒂𝒚!")
-      .setColor(0x00ae86)
-      .setTimestamp();
+      .setImage("https://iili.io/KgdrhBt.gif")
+      .setColor(0x00ae86);;
+
 
 
     await interaction.channel.send({

@@ -9,7 +9,6 @@ module.exports = {
       if (!interaction.isButton()) return;
       if (interaction.customId === "info-HELP") {
         const messageComponents = interaction.message?.components ?? [];
-        const jsonComponents = JSON.stringify(messageComponents, null, 2);
 
         const roleList = [];
         for (const row of messageComponents) {
@@ -80,13 +79,13 @@ module.exports = {
       if (interaction.member.roles.cache.has(roleId)) {
         await interaction.member.roles.remove(roleId);
         return interaction.reply({
-          content: `You have removed the role **${role.name}**.`,
+          content: `You have removed the role **<@&${role.id}>**.`,
           flags: MessageFlags.Ephemeral,
         });
       } else {
         await interaction.member.roles.add(roleId);
         return interaction.reply({
-          content: `You have been given the role **${role.name} **.`,
+          content: `You have been given the role **<@&${role.id}>**.`,
           flags: MessageFlags.Ephemeral,
         });
       }

@@ -6,13 +6,13 @@ module.exports = {
   async execute(client) {
     console.log(`✅ Logged in as ${client.user.tag}`);
     client.user.setPresence({
-      status: "online",
-      activities: [
-        {
-          name: "The Kids",
-          type: ActivityType.Watching,
-        },
-      ],
+        activities: [{ 
+            name: 'Mallu Lounge', // This is the name that shows up
+            type: ActivityType.Streaming,
+            state: 'https://discord.gg/mallulounge',
+            url: 'https://twitch.tv/mallulounge',
+        }],
+        status: 'online',
     });
     
   },
