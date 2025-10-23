@@ -51,7 +51,7 @@ module.exports = {
         const description = roleList.join("\n") || "No roles available.";
 
         const embed = new EmbedBuilder()
-          .setTitle("LIST")
+          .setTitle("<a:eyekiller:1430580121105862756> LIST")
           .setDescription(description)
           .setColor(0x5865f2)
           .setTimestamp();
