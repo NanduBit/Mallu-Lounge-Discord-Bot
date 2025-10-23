@@ -20,7 +20,7 @@ module.exports = {
         .setLabel("Open DMs")
         .setEmoji("<:dms_open:1430917401964314735>"),
       new ButtonBuilder()
-        .setCustomId("1426529183143825458-ASK_FOR_DMS")
+        .setCustomId("1426529411234005042-ASK_FOR_DMS")
         .setStyle(ButtonStyle.Secondary)
         .setLabel("Ask for DMs")
         .setEmoji("<:ask_to_dm:1430917476992155669>"),
