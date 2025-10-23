@@ -19,10 +19,9 @@ module.exports = {
                 icon_url: "",
               },
               title: "𝕎𝕖𝕝𝕔𝕠𝕞𝕖 𝕋𝕠 𝕄𝕒𝕝𝕝𝕦 𝕃𝕠𝕦𝕟𝕘𝕖",
-              description:`**Welcome to Mallu Lounge <@${member.id}>
- come talk in <#1309818552714530856>**`,
+              description:`**❏ Welcome to Mallu Lounge <@${member.id}> \n❏ Come talk in <#1309818552714530856>**`,
               image: {
-                url: "https://media.tenor.com/lxMJcSXfSLIAAAAC/zero2-zero-two.gif",
+                url: "https://c.tenor.com/0Gis2jrI9rwAAAAd/tenor.gif",
               },
               footer: {
                 text: `${member.user.username} joined the server!`,
@@ -38,13 +37,10 @@ module.exports = {
         await generalChannel.send({
           embeds: [
             {
-              author: {
-                name: `Welcome to the server @{member.user.username}`,
-                icon_url: member.user.displayAvatarURL(),
-              },
+              description: `**Welcome to the server <@${member.id}>**`,
               image: {
-                 url: "https://tenor.com/view/noo-melcow-gif-12196187"
-              }
+                 url: "https://media.tenor.com/lxMJcSXfSLIAAAAC/zero2-zero-two.gif"
+              },
               color: Math.floor(Math.random() * 16777215),
             },
           ],
