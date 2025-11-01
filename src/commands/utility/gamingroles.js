@@ -29,11 +29,7 @@ module.exports = {
       new ButtonBuilder()
         .setCustomId("1421789987090858029-FINALS")
         .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:finals:1430601338282184754>"),
-      new ButtonBuilder()
-        .setCustomId("1430575222645329980-WUTHERING_WAVES")
-        .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:wuwa:1430554070082388031>")
+        .setEmoji("<:finals:1430601338282184754>")
     );
 
     const row2 = new ActionRowBuilder().addComponents(
@@ -52,11 +48,7 @@ module.exports = {
       new ButtonBuilder()
         .setCustomId("1357915212556009623-CSGO")
         .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:csgo:1430553918378606614>"),
-      new ButtonBuilder()
-        .setCustomId("1357916272419147869-GTA_5")
-        .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:gta5:1430553867309023361>")
+        .setEmoji("<:csgo:1430553918378606614>")
     );
 
     const row3 = new ActionRowBuilder().addComponents(
@@ -75,14 +67,22 @@ module.exports = {
       new ButtonBuilder()
         .setCustomId("1430576317589487636-MINECRAFT")
         .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:minecraft:1430573108376371364>"),
-      new ButtonBuilder()
-        .setCustomId("1430576430177058896-ROBLOX")
-        .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:roblox:1430572897608405116>")
+        .setEmoji("<:minecraft:1430573108376371364>")
     );
 
     const row4 = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setCustomId("1430576430177058896-ROBLOX")
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji("<:roblox:1430572897608405116>"),
+      new ButtonBuilder()
+        .setCustomId("1430575222645329980-WUTHERING_WAVES")
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji("<:wuwa:1430554070082388031>"),
+      new ButtonBuilder()
+        .setCustomId("1357916272419147869-GTA_5")
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji("<:gta5:1430553867309023361>"),
       new ButtonBuilder()
         .setCustomId("info-HELP")
         .setStyle(ButtonStyle.Primary)
