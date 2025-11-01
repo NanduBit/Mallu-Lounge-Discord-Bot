@@ -28,11 +28,7 @@ module.exports = {
         .setCustomId("1426529471942496316-DMS_CLOSED")
         .setStyle(ButtonStyle.Secondary)
         .setLabel("Closed DMs")
-        .setEmoji("<:dms_closed:1430917668646555648>"),
-      new ButtonBuilder()
-        .setCustomId("info-HELP")
-        .setStyle(ButtonStyle.Primary)
-        .setEmoji("<a:info:1430601792147951617>")
+        .setEmoji("<:dms_closed:1430917668646555648>")
     );
 
     
