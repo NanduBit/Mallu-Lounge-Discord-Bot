@@ -19,7 +19,7 @@ module.exports = {
                 icon_url: "",
               },
               title: "𝕎𝕖𝕝𝕔𝕠𝕞𝕖 𝕋𝕠 𝕄𝕒𝕝𝕝𝕦 𝕃𝕠𝕦𝕟𝕘𝕖",
-              description:`**❏ Welcome to Mallu Lounge <@${member.id}> \n❏ Come talk in <#1309818552714530856>**`,
+              description:`**❏ Welcome to Mallu Lounge <@${member.id}> \n❏ Come talk in <#${generalChannelID}>**`,
               image: {
                 url: "https://c.tenor.com/0Gis2jrI9rwAAAAd/tenor.gif",
               },
