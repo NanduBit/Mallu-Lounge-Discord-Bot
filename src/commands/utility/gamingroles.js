@@ -84,18 +84,34 @@ module.exports = {
         .setStyle(ButtonStyle.Secondary)
         .setEmoji("<:gta5:1430553867309023361>"),
       new ButtonBuilder()
+        .setCustomId("1357915349730988072-FORTNITE")
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji("<:fortnite:1443239103457005798>")
+    );
+    const row5 = new ActionRowBuilder().addComponents(
+      new ButtonBuilder()
+        .setCustomId("1434795637303672922-ARC_RAIDERS")
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji("<:arcraiders:1443244438897033236>"),
+      new ButtonBuilder()
+        .setCustomId("1441431284827295794-SKRIBBL")
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji("<:skribbl:1443242914661793872>"),
+      new ButtonBuilder()
+        .setCustomId("1443245967351484526-WHERE_WINDS_MEET")
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji("<:windsmeet:1443245491071750295>"),
+      new ButtonBuilder()
         .setCustomId("info-HELP")
         .setStyle(ButtonStyle.Primary)
         .setEmoji("<a:info:1430601792147951617>")
     );
 
-    const components = [row1, row2, row3, row4];
+    const components = [row1, row2, row3, row4, row5];
 
     const embed = new EmbedBuilder()
       .setImage("https://iili.io/KgdrhBt.gif")
-      .setColor(0x00ae86);;
-
-
+      .setColor(0x00ae86);
 
     await interaction.channel.send({
       embeds: [embed],

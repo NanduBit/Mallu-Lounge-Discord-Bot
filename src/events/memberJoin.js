@@ -8,6 +8,7 @@ module.exports = {
     if (member.guild.id === guildID) {
       const channel = await member.guild.channels.fetch(welcomeChannelID);
       const generalChannel = await member.guild.channels.fetch(generalChannelID);
+      await new Promise(resolve => setTimeout(resolve, 10000));
 
       if (channel) {
         await channel.send({
