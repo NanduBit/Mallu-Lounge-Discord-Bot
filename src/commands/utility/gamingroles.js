@@ -29,7 +29,12 @@ module.exports = {
       new ButtonBuilder()
         .setCustomId("1421789987090858029-FINALS")
         .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:finals:1430601338282184754>")
+        .setEmoji("<:finals:1430601338282184754>"),
+        
+      new ButtonBuilder()
+        .setCustomId("1443245967351484526-WHERE_WINDS_MEET")
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji("<:windsmeet:1443245491071750295>"),
     );
 
     const row2 = new ActionRowBuilder().addComponents(
@@ -48,7 +53,12 @@ module.exports = {
       new ButtonBuilder()
         .setCustomId("1357915212556009623-CSGO")
         .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:csgo:1430553918378606614>")
+        .setEmoji("<:csgo:1430553918378606614>"),
+        
+      new ButtonBuilder()
+        .setCustomId("1441431284827295794-SKRIBBL")
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji("<:skribbl:1443242914661793872>"),
     );
 
     const row3 = new ActionRowBuilder().addComponents(
@@ -67,7 +77,12 @@ module.exports = {
       new ButtonBuilder()
         .setCustomId("1430576317589487636-MINECRAFT")
         .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:minecraft:1430573108376371364>")
+        .setEmoji("<:minecraft:1430573108376371364>"),
+        
+      new ButtonBuilder()
+        .setCustomId("1434795637303672922-ARC_RAIDERS")
+        .setStyle(ButtonStyle.Secondary)
+        .setEmoji("<:arcraiders:1443244438897033236>"),
     );
 
     const row4 = new ActionRowBuilder().addComponents(
@@ -86,28 +101,16 @@ module.exports = {
       new ButtonBuilder()
         .setCustomId("1357915349730988072-FORTNITE")
         .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:fortnite:1443239103457005798>")
-    );
-    const row5 = new ActionRowBuilder().addComponents(
-      new ButtonBuilder()
-        .setCustomId("1434795637303672922-ARC_RAIDERS")
-        .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:arcraiders:1443244438897033236>"),
-      new ButtonBuilder()
-        .setCustomId("1441431284827295794-SKRIBBL")
-        .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:skribbl:1443242914661793872>"),
-      new ButtonBuilder()
-        .setCustomId("1443245967351484526-WHERE_WINDS_MEET")
-        .setStyle(ButtonStyle.Secondary)
-        .setEmoji("<:windsmeet:1443245491071750295>"),
+        .setEmoji("<:fortnite:1443239103457005798>"),
+        
       new ButtonBuilder()
         .setCustomId("info-HELP")
         .setStyle(ButtonStyle.Primary)
         .setEmoji("<a:info:1430601792147951617>")
     );
+   
 
-    const components = [row1, row2, row3, row4, row5];
+    const components = [row1, row2, row3, row4];
 
     const embed = new EmbedBuilder()
       .setImage("https://iili.io/KgdrhBt.gif")
