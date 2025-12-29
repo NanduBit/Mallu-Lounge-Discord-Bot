@@ -1,6 +1,8 @@
 const { Events, EmbedBuilder } = require("discord.js");
 const { deletedMsgLogServerID, deletedMsgLogChannelID, observedServerID } = require("../config");
 
+const EMBED_FIELD_LIMIT = 1024;
+
 module.exports = {
   name: Events.MessageDelete,
   once: false,
@@ -39,8 +41,8 @@ module.exports = {
         .addFields(
           { name: "Author", value: messageAuthor, inline: true },
           { name: "Channel", value: messageChannel, inline: true },
-          { name: "Server", value: `${message.guild.name} (${message.guild.id})`, inline: false },
-          { name: "Message Content", value: messageContent.length > 1024 ? messageContent.substring(0, 1021) + "..." : messageContent, inline: false },
+          { name: "Server", value: `${message.guild?.name || "*[Server unknown]*"} (${message.guild?.id || "*[Unknown ID]*"})`, inline: false },
+          { name: "Message Content", value: messageContent.length > EMBED_FIELD_LIMIT ? messageContent.substring(0, EMBED_FIELD_LIMIT - 3) + "..." : messageContent, inline: false },
           { name: "Posted At", value: `<t:${Math.floor(messageCreatedAt.getTime() / 1000)}:F>`, inline: true },
           { name: "Deleted At", value: `<t:${Math.floor(deletedAt.getTime() / 1000)}:F>`, inline: true }
         )
@@ -56,7 +58,7 @@ module.exports = {
         const attachmentUrls = message.attachments.map(att => att.url).join("\n");
         embed.addFields({ 
           name: `Attachments (${message.attachments.size})`, 
-          value: attachmentUrls.length > 1024 ? attachmentUrls.substring(0, 1021) + "..." : attachmentUrls, 
+          value: attachmentUrls.length > EMBED_FIELD_LIMIT ? attachmentUrls.substring(0, EMBED_FIELD_LIMIT - 3) + "..." : attachmentUrls, 
           inline: false 
         });
       }
