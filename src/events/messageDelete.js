@@ -29,8 +29,17 @@ module.exports = {
 
       // Prepare message content (handle partial messages)
       const messageContent = message.content || "*[Message content not available]*";
-      const messageAuthor = message.author ? `${message.author.tag} (${message.author.id})` : "*[Author unknown]*";
-      const messageChannel = message.channel ? `<#${message.channel.id}> (${message.channel.name})` : "*[Channel unknown]*";
+      
+      // Format user info as: ID(username)
+      const userInfo = message.author 
+        ? `${message.author.id}(${message.author.username})` 
+        : "*[Author unknown]*";
+      
+      // Format channel info as: ID(channel name)
+      const channelInfo = message.channel 
+        ? `${message.channel.id}(${message.channel.name})` 
+        : "*[Channel unknown]*";
+      
       const messageCreatedAt = message.createdAt || new Date(0);
       const deletedAt = new Date();
 
@@ -39,8 +48,8 @@ module.exports = {
         .setTitle("🗑️ Message Deleted")
         .setColor(0xFF0000)
         .addFields(
-          { name: "Author", value: messageAuthor, inline: true },
-          { name: "Channel", value: messageChannel, inline: true },
+          { name: "Author", value: userInfo, inline: true },
+          { name: "Channel", value: channelInfo, inline: true },
           { name: "Server", value: `${message.guild?.name || "*[Server unknown]*"} (${message.guild?.id || "*[Unknown ID]*"})`, inline: false },
           { name: "Message Content", value: messageContent.length > EMBED_FIELD_LIMIT ? messageContent.substring(0, EMBED_FIELD_LIMIT - 3) + "..." : messageContent, inline: false },
           { name: "Posted At", value: `<t:${Math.floor(messageCreatedAt.getTime() / 1000)}:F>`, inline: true },
@@ -63,8 +72,14 @@ module.exports = {
         });
       }
 
-      // Send the log embed
-      await logChannel.send({ embeds: [embed] });
+      // Build the message to send with content outside the embed
+      const messageToSend = {
+        content: `**Deleted Message:**\n**User:** ${userInfo}\n**Channel:** ${channelInfo}\n**Content:** ${messageContent}`,
+        embeds: [embed]
+      };
+
+      // Send the log with content and embed
+      await logChannel.send(messageToSend);
 
     } catch (error) {
       console.error("❌ Error logging deleted message:", error);
