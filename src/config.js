@@ -6,5 +6,5 @@ module.exports = {
 //  rollID: "1139759856725220422",
   deletedMsgLogServerID: "1397597819841544232",
   deletedMsgLogChannelID: "1434245650043895858",
-  observedServerID: guildID,
+  observedServerID: "1309817795755769926",
 };
