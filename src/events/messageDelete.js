@@ -29,7 +29,7 @@ module.exports = {
       const messageContent = message.content || "*[Message content not available]*";
       const messageAuthor = message.author ? `${message.author.tag} (${message.author.id})` : "*[Author unknown]*";
       const messageChannel = message.channel ? `<#${message.channel.id}> (${message.channel.name})` : "*[Channel unknown]*";
-      const messageCreatedAt = message.createdAt ? message.createdAt : "*[Unknown]*";
+      const messageCreatedAt = message.createdAt || new Date(0);
       const deletedAt = new Date();
 
       // Create embed with deleted message details
