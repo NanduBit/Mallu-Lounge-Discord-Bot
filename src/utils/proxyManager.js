@@ -18,7 +18,7 @@ class ProxyManager {
    */
   async fetchProxy(options = {}) {
     const defaultOptions = {
-      protocol: ['http', 'socks4', 'socks5'],
+      protocol: ['http', 'https', 'socks4', 'socks5'],
       anonymity: ['anonymous', 'elite'],
       https: true,
       speed: 5000,
@@ -128,6 +128,7 @@ class ProxyManager {
 
   /**
    * Check public IP (useful for verifying proxy connection)
+   * Note: This will return the proxy's IP if a proxy is currently active
    * @returns {Promise<Object>} - IP information
    */
   async checkPublicIp() {

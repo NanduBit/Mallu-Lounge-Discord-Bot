@@ -151,7 +151,7 @@ class RateLimitHandler {
       if (newAgent && this.client.rest) {
         this.client.rest.setAgent(newAgent);
         this.proxyActive = true;
-        this.rateLimitCount = 0;
+        // Keep rate limit count to allow subsequent rotations if needed
         console.log('✅ Proxy rotated successfully');
         
         // Reset cooldown timer after rotation
@@ -171,10 +171,11 @@ class RateLimitHandler {
    * @returns {Object} - Status object with proxy info
    */
   getStatus() {
+    const currentProxy = this.client.proxyManager?.getCurrentProxy();
     return {
       proxyActive: this.proxyActive,
       rateLimitCount: this.rateLimitCount,
-      currentProxy: this.client.proxyManager?.getCurrentProxy()?.proxy || null,
+      currentProxy: currentProxy ? currentProxy.proxy : null,
     };
   }
 }
