@@ -7,4 +7,7 @@ module.exports = {
   deletedMsgLogServerID: "1397597819841544232",
   deletedMsgLogChannelID: "1434245650043895858",
   observedServerID: "1309817795755769926",
+  // Proxy configuration
+  proxyEnabled: true, // Set to true to enable automatic proxy on rate limit
+  proxiflyApiKey: null, // Optional: Get API key from https://proxifly.dev for better limits
 };
