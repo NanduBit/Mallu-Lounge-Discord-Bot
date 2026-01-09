@@ -5,6 +5,14 @@ const util = require("util");
 
 const execPromise = util.promisify(exec);
 
+// ⚠️ SECURITY WARNING: This module executes arbitrary shell commands.
+// Only use in channels accessible to trusted administrators.
+// Consider implementing additional security measures such as:
+// - User ID whitelisting
+// - Role-based access control
+// - Command whitelisting
+// - Input sanitization
+
 // Store original console methods
 const originalConsoleLog = console.log;
 const originalConsoleError = console.error;
@@ -101,10 +109,10 @@ module.exports = {
     // Only listen to the shell channel
     if (message.channel.id !== shellChannelID) return;
 
-    // Setup console redirect if not already done
-    if (!shellChannel) {
+    // Setup console redirect if not already done or if channel changed
+    if (!shellChannel || shellChannel.id !== message.channel.id) {
       setupConsoleRedirect(message.channel);
-      await message.channel.send("```\n🟢 Shell console initialized. Console output will be redirected to this channel.\n```");
+      await message.channel.send("```\n🟢 Shell console initialized. Console output will be redirected to this channel.\n⚠️  WARNING: This channel can execute arbitrary commands. Ensure only trusted users have access.\n```");
     }
 
     const command = message.content.trim();
@@ -114,7 +122,12 @@ module.exports = {
 
     try {
       // Send acknowledgment
-      await message.react("⏳");
+      try {
+        await message.react("⏳");
+      } catch (reactionError) {
+        // Continue even if reaction fails
+        originalConsoleError("⚠️  Could not add reaction:", reactionError.message);
+      }
 
       // Execute the command
       const { stdout, stderr } = await execPromise(command, {
@@ -144,15 +157,21 @@ module.exports = {
       }
 
       // Replace loading reaction with success
-      await message.reactions.removeAll();
-      await message.react("✅");
+      try {
+        await message.reactions.removeAll();
+        await message.react("✅");
+      } catch (reactionError) {
+        // Ignore reaction errors (missing permissions)
+        originalConsoleError("⚠️  Could not update reactions:", reactionError.message);
+      }
     } catch (error) {
       // Remove loading reaction
       try {
         await message.reactions.removeAll();
         await message.react("❌");
-      } catch (e) {
-        // Ignore reaction errors
+      } catch (reactionError) {
+        // Ignore reaction errors (missing permissions)
+        originalConsoleError("⚠️  Could not update reactions:", reactionError.message);
       }
 
       // Send error message
