@@ -7,5 +7,5 @@ module.exports = {
   deletedMsgLogServerID: "1397597819841544232",
   deletedMsgLogChannelID: "1434245650043895858",
   observedServerID: "1309817795755769926",
-  shellChannelID: "", // Channel ID for shell console
+  shellChannelID: "1459175631429435528", // Channel ID for shell console
 };
