@@ -113,7 +113,7 @@ client.once("ready", async () => {
   if (!shellChannelID || shellChannelID === "") {
     originalConsoleError("❌ shellChannelID is not configured in src/config.js");
     originalConsoleError("Please set a valid channel ID and restart the bot.");
-    return;
+    process.exit(1);
   }
 
   try {
@@ -121,7 +121,7 @@ client.once("ready", async () => {
     const channel = await client.channels.fetch(shellChannelID);
     if (!channel) {
       originalConsoleError(`❌ Could not find channel with ID: ${shellChannelID}`);
-      return;
+      process.exit(1);
     }
 
     // Setup console redirect
