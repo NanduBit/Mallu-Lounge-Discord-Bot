@@ -11,6 +11,12 @@ const os = require("os");
 // - Command whitelisting
 // - Input sanitization
 
+// Configuration constants
+const FLUSH_TIMEOUT_MS = 500; // Time to wait before flushing output buffer
+const BUFFER_FLUSH_THRESHOLD = 1500; // Buffer size threshold for immediate flush
+const SHELL_RESTART_DELAY_MS = 1000; // Delay before restarting crashed shell
+const REACTION_UPDATE_DELAY_MS = 500; // Delay before updating message reactions
+
 // Create independent Discord client for shell console
 const client = new Client({
   intents: [
@@ -101,7 +107,7 @@ function scheduleFlush() {
   flushTimer = setTimeout(() => {
     flushOutputBuffer();
     flushTimer = null;
-  }, 500); // Flush after 500ms of inactivity
+  }, FLUSH_TIMEOUT_MS);
 }
 
 // Initialize persistent shell process
@@ -113,11 +119,10 @@ function startShellProcess() {
 
   // Determine shell based on platform
   const shell = os.platform() === "win32" ? "cmd.exe" : "/bin/bash";
-  const shellArgs = os.platform() === "win32" ? [] : [];
 
   originalConsoleLog(`🔧 Starting persistent shell: ${shell}`);
   
-  shellProcess = spawn(shell, shellArgs, {
+  shellProcess = spawn(shell, [], {
     cwd: process.cwd(),
     env: process.env,
     shell: false,
@@ -130,8 +135,8 @@ function startShellProcess() {
     
     outputBuffer += output;
     
-    // If buffer is getting large or contains complete lines, flush immediately
-    if (outputBuffer.length > 1500) {
+    // If buffer is getting large, flush immediately
+    if (outputBuffer.length > BUFFER_FLUSH_THRESHOLD) {
       if (flushTimer) clearTimeout(flushTimer);
       flushOutputBuffer();
     } else {
@@ -165,7 +170,7 @@ function startShellProcess() {
       if (shellChannel) {
         shellChannel.send("```\n🔄 Shell process restarted\n```").catch(() => {});
       }
-    }, 1000);
+    }, SHELL_RESTART_DELAY_MS);
   });
 
   // Handle process errors
@@ -275,7 +280,7 @@ client.on("messageCreate", async (message) => {
         setTimeout(() => {
           startShellProcess();
           message.channel.send("```\n✅ Shell process restarted\n```").catch(() => {});
-        }, 1000);
+        }, SHELL_RESTART_DELAY_MS);
       } else {
         await message.channel.send("```\n⚠️  No shell process to restart. Starting new one...\n```");
         startShellProcess();
@@ -326,7 +331,7 @@ client.on("messageCreate", async (message) => {
       } catch (reactionError) {
         originalConsoleError("⚠️  Could not update reactions:", reactionError.message);
       }
-    }, 500);
+    }, REACTION_UPDATE_DELAY_MS);
 
   } catch (error) {
     // Remove loading reaction
